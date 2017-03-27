@@ -14,58 +14,65 @@ import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import { StackNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import Quizz from './Quizz.js';
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'ZonaDuel',
   };
   render() {
+    const uiTheme = {
+      palette: {
+        primaryColor: COLOR.green500,
+      }
+    }
     const {navigate} = this.props.navigation;
     return (
+      <ThemeProvider uiTheme={uiTheme}>
     <View style={styles.container}>
     <LinearGradient colors={['#f44f0d', '#f88a00', '#fcac00']} style={styles.linearGradient}>
 
     <View style={styles.logo}>
         <Image
-          style={{width: 250, height: 250,}}
+          style={{width: 200, height: 200,}}
           source={require('./img/zona.png')}
         />
       </View>
         <View style={styles.more}>
             <Text style={{textAlign: 'center', fontFamily: 'Gill Sans',}}>
             ZonaDuel, un jeu rapide, amusant te permettant de défier tes amis professionnels de santé sur le Zona.
-            Qui sera le meilleur ?
+            {'\n'}Qui sera le meilleur ?
            </Text>
           </View>
           <View style={styles.quiz}>
-        <Button
-          style={styles.submit}
+        <Button raised primary
           onPress={() => navigate('Quizz')}
-          title="Let's go!"/>
+          title="Commencer une nouvelle partie"/>
           </View>
           </LinearGradient>
 
       </View>
+      </ThemeProvider>
     );
   }
 }
 
 const styles = StyleSheet.create({
   logo: {
-    margin: 65,
+    marginLeft: 90,
   },
   more: {
-    borderRadius: 10,
     borderWidth: 1,
-    marginTop: 10,
+    borderRadius: 2,
     margin: 10,
-    backgroundColor: '#ffffcc',
+    marginTop: 70,
+    backgroundColor: '#73c51a',
   },
   quiz: {
     backgroundColor: 'red',
     borderWidth: 2,
     borderRadius: 5,
-    margin: 120,
-    marginTop: 50,
+    margin: 70,
+    marginTop: 150,
 
   },
   container: {
