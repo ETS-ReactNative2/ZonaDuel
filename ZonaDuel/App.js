@@ -18,12 +18,12 @@ class HomeScreen extends React.Component {
     const {navigate} = this.props.navigation;
     return (
     <View style={styles.container}>
-    <LinearGradient colors={['skyblue', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+    <LinearGradient colors={['#f44f0d', '#f88a00', '#fcac00']} style={styles.linearGradient}>
 
     <View style={styles.logo}>
         <Image
           style={{width: 250, height: 250,}}
-          source={require('./img/zonaduel.png')}
+          source={require('./img/zona.png')}
         />
       </View>
         <View style={styles.more}>
