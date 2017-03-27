@@ -9,7 +9,7 @@ import {
   Navigator,
   NativesModules
 } from 'react-native';
-import { COLOR, ThemeProvider } from '../react-native-material-ui';
+import { COLOR, ThemeProvider } from 'react-native-material-ui';
 
 import { StackNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
