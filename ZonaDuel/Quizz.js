@@ -76,15 +76,24 @@ class ResponsesWrapper extends Component {
 
     render() {
         return (
-            <View>
+            <View alignItems="center">
                 <Text>
                     Good response is:
                 </Text>
                     {this.selectResponses().map((elem, id) => {
                         return (
-                            <Button key={id}
-                                title={elem}
-                                onPress={() => {this.props.handleResponse(elem)}}/>
+                            <View style={{
+                                    backgroundColor: 'green',
+                                    marginTop: 40,
+                                    width: '80%'
+                                }}
+                                key={id}>
+                                <Button
+                                    title={elem}
+                                    titleColor="white"
+                                    onPress={() => {this.props.handleResponse(elem)}}
+                                    />
+                            </View>
                         );
                     })}
             </View>
@@ -116,7 +125,7 @@ class Quizz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            all: allPossible(AllQuestions, 'PEC'),
+            all: allPossible(AllQuestions, 'EPI'),
             current: 0,
             score: 0,
             status: 'working'
@@ -136,7 +145,7 @@ class Quizz extends Component {
             let newScore = this.state.score + 1;
             this.setState({score: newScore});
         }
-        if ((this.state.all.length == actual) || (actual == 3)) {
+        if ((this.state.all.length == actual) || (actual == 5)) {
             this.setState({status: 'finished'});
         } else {
             this.setState({current: actual});

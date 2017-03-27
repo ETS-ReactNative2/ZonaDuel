@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
+import Quizz from './Quizz.js'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -21,10 +22,10 @@ class HomeScreen extends React.Component {
     <LinearGradient colors={['skyblue', '#3b5998', '#192f6a']} style={styles.linearGradient}>
 
     <View style={styles.logo}>
-        <Image
+        {/*}<Image
           style={{width: 250, height: 250,}}
           source={require('./img/zonaduel.png')}
-        />
+        />*/}
       </View>
         <View style={styles.more}>
             <Text style={{textAlign: 'center', fontFamily: 'Gill Sans',}}>
@@ -68,16 +69,6 @@ const styles = StyleSheet.create({
 
 
 })
-
-
-class Quizz extends React.Component {
-  static navigationOptions = {
-    title: 'MyQuestion',
-  }
-  render() {
-    return <Text>Hello Im fucked</Text>;
-  }
-}
 
 const ZonaDuel = StackNavigator({
   Home: { screen: HomeScreen },
