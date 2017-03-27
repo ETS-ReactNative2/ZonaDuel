@@ -78,7 +78,7 @@ class ResponsesWrapper extends Component {
         return (
             <View>
                 <Text>
-                    Good response is:
+                    Choix de réponses:
                 </Text>
                     {this.selectResponses().map((elem, id) => {
                         return (
@@ -116,7 +116,7 @@ class Quizz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            all: allPossible(AllQuestions, 'PEC'),
+            all: allPossible(AllQuestions, 'CUG'),
             current: 0,
             score: 0,
             status: 'working'
@@ -150,9 +150,9 @@ class Quizz extends Component {
                     {JSON.stringify(this.state.status)}
                 </Text>
                 <Text>
-                    Your score: {this.state.score}
+                    Votre score: {this.state.score}
                 </Text>
-                {this.state.status === 'finished' ? <Text>Your Score is: {this.state.score}</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
+                {this.state.status === 'finished' ? <Text>Votre score final: {this.state.score}</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
             </View>
         )
     }

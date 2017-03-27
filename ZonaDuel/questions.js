@@ -49,18 +49,18 @@ export default [{
 	right: ["VZV"],
 	wrong: [
 		"HHV",
-		"PGP",
+		"HPV",
 		"CMV"
 	]
 },{
 	id: 5,
 	theme: "PHY",
-	question: "Quel est le mécanisme d'action du virus responsable du ZONA ?",
+	question: "Comment le ZONA est-il transmit ?",
 	right: ["Reactivation"],
 	wrong: [
-		"Solidisation",
-		"Tractisation",
-		"Palotisation"
+		"Voie Parentarérale",
+		"Voie Respiratoire",
+		"Via Arthropodes"
 	]
 },{
 	id: 6,
@@ -79,26 +79,26 @@ export default [{
 	id: 7,
 	theme: "PHY",
 	question: "C'est un virus ..",
-	right: [".. a ARN ?"],
+	right: [".. a ADN double brin ?"],
 	wrong: [
-		".. a ADN ?",
-		".. a CDN ?",
-		".. a definir ?"
+		".. a ADN bicaténaire ?",
+		".. a ADN monocateénaire ?",
+		".. a ARN simple brin ?"
 	]
 },{
 	id: 8,
 	theme: "PHY",
-	question: "Quand la douleur persiste plusieurs mois on parle de ?",
-	right: ["Nevralgie", "Douleurs post-zosteriennes"],
+	question: "Quand la douleur persiste plusieurs mois, on parle de ?",
+	right: ["Nevralgie"],
 	wrong: [
-		"Zosteriagie",
-		"Zonagie",
-		"Douleurs de zone"
+		"Algie faciale",
+		"Non-gérison",
+		"Disparition lente mais normale des symptomes"
 	]
 },{
 	id: 9,
 	theme: "EPI",
-	question: "Le virus du zona reste a l'état dormant au niveau:",
+	question: "Le virus du zona reste a l'état dormant au niveau :",
 	right: ["Des ganglions nerveux"],
 	wrong: [
 		"Du ganglion de Gasser",
@@ -109,19 +109,19 @@ export default [{
 	id: 10,
 	theme: "DX",
 	question: "Quels syptôme atypique permet des diagnostics ?",
-	right: ["Vesicules disposes en grappe"],
+	right: ["Vêsicule disposée en grappe"],
 	wrong: [
-		"Blabla",
-		"Blablabla",
-		"Blopblop blop"
+		"Érythème photodistribué",
+		"Brûlures intenses localisées",
+		"Papule oedémateuse"
 	]
 },{
 	id: 11,
 	theme: "PEC",
 	question: "En l'absence de traitement, quelle est la durée moyenne des lésions ?",
-	right: ["1 semaine"],
+	right: ["3 semaine"],
 	wrong: [
-		"3 semaines",
+		"1 semaines",
 		"1 mois",
 		"3 mois"
 	]
@@ -164,5 +164,25 @@ export default [{
 		"61 Millions",
 		"235 Millions",
 		"350 Millions"
+	]
+},{
+	id: 16,
+	theme: "CUG",
+	question: "Comment limiter les démangeaisons ?",
+	right: ["Prendre une douche tiède"],
+	wrong: [
+		"Changer de draps toutes les semaines",
+		"Se séchez en frottant avec la serviette",
+		"Prendre un bain chaud"
+	]
+},{
+	id: 17,
+	theme: "DX",
+	question: "Les douleurs post zostériennes sont comparables à",
+	right: ["Brûlures"],
+	wrong: [
+		"Coup de soleil",
+		"Fortes démangaiseons",
+		"Crampes"
 	]
 }];
