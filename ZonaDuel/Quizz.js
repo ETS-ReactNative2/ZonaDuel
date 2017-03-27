@@ -27,15 +27,51 @@ const QuestionBox = ({question}) => {
     )
 }
 
-const renderResponses = ({right, wrong}) => {
+const shuffle = (input) => {
+
+    for (var i = input.length-1; i >=0; i--) {
+        var randomIndex = Math.floor(Math.random()*(i+1));
+        var itemAtIndex = input[randomIndex];
+        input[randomIndex] = input[i];
+        input[i] = itemAtIndex;
+    }
+    return input;
 }
 
+// const renderResponses = ({right, wrong}) => {
+// }
+
 class ResponsesWrapper extends Component {
+
+    getThreeWrong(wrongs) {
+        let res = [];
+        let cur = '';
+        while (res.length != 3) {
+            cur = wrongs[Math.floor(Math.random() * (wrongs.length))];
+            if (!res.includes(cur)) {
+                res.push(cur);
+            }
+        }
+        return res;
+    }
+
     selectResponses() {
         const {wrong, right} = this.props.question;
-        const responses = [];
-        responses.push(right[getRandomInt(0, right.lentgh)]);
-        return right;
+        let responses = [];
+        responses.push((right.length != 1) ? right[Math.floor(Math.random() * (right.length))] : right[0]);
+        if (wrong.length <= 3) {
+            ret = responses.concat(wrong);
+            shuffle(ret);
+            return ret;
+        } else {
+            ret = responses.concat(this.getThreeWrong(wrong));
+            shuffle(ret);
+            return ret;
+        }
+    }
+
+    isRight(response, question) {
+        return question.right.includes(response);
     }
 
     render() {
@@ -44,11 +80,13 @@ class ResponsesWrapper extends Component {
                 <Text>
                     Good response is:
                 </Text>
-                <Text>
-                    {this.selectResponses().map((elem) => {
-                        console.log(elem);
+                    {this.selectResponses().map((elem, id) => {
+                        return (
+                            <Button key={id}
+                                title={elem}
+                                onPress={() => {this.props.handleResponse(elem)}}/>
+                        );
                     })}
-                </Text>
             </View>
         )
     }
@@ -60,52 +98,61 @@ class RenderQuestion extends Component {
         return (
             <View>
                 <QuestionBox question={question} />
-                <ResponsesWrapper question={question} />
+                <ResponsesWrapper handleResponse={this.props.handleResponse} question={question} />
             </View>
         )
     }
 }
 
+const allPossible = (tab, theme) => {
+    return tab.filter((element) => {
+    if (element.theme === theme) {
+        return true;
+    }
+})}
+
+
 class Quizz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            current: {},
-            all: AllQuestions
+            all: allPossible(AllQuestions, 'PEC'),
+            current: 0,
+            score: 0,
+            status: 'working'
         }
-    }
-
-    getQuestionFromTheme(theme) {
-        const allPossible = this.state.all.filter((element) => {
-            if (element.theme === theme) {
-                return true;
-            }
-        })
-        return allPossible;
     }
 
     loadQuestions(theme) {
         this.setState({
-            currentTheme: theme
-        })
+            currentTheme: theme,
+        });
     }
 
-    changeQuestion() {
-        const actual = this.state.current
-        const passed = this.state.passedQuestions
+    changeQuestion(response) {
+        const actual = this.state.current + 1;
 
-        this.setState({
-            passedQuestions: [...passed, actual]
-        })
+        if (this.state.all[this.state.current].right.includes(response)) {
+            let newScore = this.state.score + 1;
+            this.setState({score: newScore});
+        }
+        if ((this.state.all.length == actual) || (actual == 3)) {
+            this.setState({status: 'finished'});
+        } else {
+            this.setState({current: actual});
+        }
     }
+
     render() {
         return (
             <View>
-                {this.getQuestionFromTheme('PEC').map((elem, id) => {
-                    return (
-                        <RenderQuestion question={elem} />
-                    )
-                })}
+                <Text>
+                    {JSON.stringify(this.state.status)}
+                </Text>
+                <Text>
+                    Your score: {this.state.score}
+                </Text>
+                {this.state.status === 'finished' ? <Text>Your Score is: {this.state.score}</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
             </View>
         )
     }
