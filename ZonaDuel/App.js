@@ -46,7 +46,9 @@ class HomeScreen extends React.Component {
           <View style={styles.quiz}>
         <Button raised primary
           onPress={() => navigate('Quizz')}
-          title="Commencer une nouvelle partie"/>
+          title="Commencer une nouvelle partie"
+          color="#ffff" />
+
           </View>
           </LinearGradient>
 
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#73c51a',
   },
   quiz: {
-    backgroundColor: 'red',
+    backgroundColor: '#1194f6',
     borderWidth: 2,
     borderRadius: 5,
     margin: 70,
