@@ -5,11 +5,15 @@ import {
   Text,
   Button,
   View,
-  Image
+  Image,
+  Navigator,
+  NativesModules
 } from 'react-native';
+import { COLOR, ThemeProvider } from '../react-native-material-ui';
+
 import { StackNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
-
+import Quizz from './Quizz.js';
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'ZonaDuel',
@@ -34,6 +38,7 @@ class HomeScreen extends React.Component {
           </View>
           <View style={styles.quiz}>
         <Button
+          style={styles.submit}
           onPress={() => navigate('Quizz')}
           title="Let's go!"/>
           </View>
@@ -50,11 +55,13 @@ const styles = StyleSheet.create({
   },
   more: {
     borderRadius: 10,
+    borderWidth: 1,
     marginTop: 10,
-      backgroundColor: 'skyblue',
+    margin: 10,
+    backgroundColor: '#ffffcc',
   },
   quiz: {
-    backgroundColor: 'orange',
+    backgroundColor: 'red',
     borderWidth: 2,
     borderRadius: 5,
     margin: 120,
@@ -69,15 +76,6 @@ const styles = StyleSheet.create({
 
 })
 
-
-class Quizz extends React.Component {
-  static navigationOptions = {
-    title: 'MyQuestion',
-  }
-  render() {
-    return <Text>Hello Im fucked</Text>;
-  }
-}
 
 const ZonaDuel = StackNavigator({
   Home: { screen: HomeScreen },
