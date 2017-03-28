@@ -4,9 +4,9 @@ export default [{
 	question: "Combien de personnes sont touchées en France par an ?",
 	right: ["300000"],
 	wrong: [
-		"50000",
-		"100000",
-		"600000"
+		"50 000",
+		"100 000",
+		"600 000"
 	]
 },
 {
@@ -109,7 +109,7 @@ export default [{
 	id: 10,
 	theme: "DX",
 	question: "Quels syptôme atypique permet des diagnostics ?",
-	right: ["Vêsicule disposée en grappe"],
+	right: ["Vésicule disposée en grappe"],
 	wrong: [
 		"Érythème photodistribué",
 		"Brûlures intenses localisées",
@@ -119,7 +119,7 @@ export default [{
 	id: 11,
 	theme: "PEC",
 	question: "En l'absence de traitement, quelle est la durée moyenne des lésions ?",
-	right: ["3 semaine"],
+	right: ["3 semaines"],
 	wrong: [
 		"1 semaines",
 		"1 mois",
@@ -184,5 +184,25 @@ export default [{
 		"Coup de soleil",
 		"Fortes démangaiseons",
 		"Crampes"
+	]
+},{
+	id: 18,
+	theme: "DX",
+	question: "Les lésions causées par le ZONA sont dues à des altérations épidermiques localisés resultant :",
+	right: ["D'une nécrose kétatinocytaire"],
+	wrong: [
+		"D'une spongiose",
+		"D'un clivage intra-épidermique",
+		"D'un afflux de polynucléaires"
+	]
+},{
+	id: 19,
+	theme: "PEC",
+	question: "Aujourd'hui en France, combien de personnes sont vacinées contre le zona ?",
+	right: ["1,2%"],
+	wrong: [
+		"1,8%",
+		"2,4%",
+		"0,6%"
 	]
 }];

@@ -30,35 +30,35 @@ class ThemeChooser extends Component {
               marginTop: 20,
             }}>
           <View
-          style={styles.quiz}>
+          style={styles.epi}>
             <Button
             title="Épidémologie"
             color="white"
             onPress={() => {navigate('Quizz', {theme: 'EPI'})}} />
           </View>
           <View
-          style={styles.quiz}>
+          style={styles.phy}>
             <Button
             color="white"
             title="Physiopathologie"
             onPress={() => {navigate('Quizz', {theme: 'PHY'})}} />
           </View>
           <View
-          style={styles.quiz}>
+          style={styles.dx}>
             <Button
             color="white"
             title="Signes cliniques"
             onPress={() => {navigate('Quizz', {theme: 'DX'})}} />
           </View>
           <View
-          style={styles.quiz}>
+          style={styles.pec}>
             <Button
             color="white"
             title="Prise en charge"
             onPress={() => {navigate('Quizz', {theme: 'PEC'})}} />
           </View>
           <View
-          style={styles.quiz}>
+          style={styles.cug}>
             <Button
             color="white"
             title="Prévention"
@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     margin: 10,
     marginTop: 70,
-    backgroundColor: '#73c51a',
   },
   quiz: {
     backgroundColor: '#1194f6',
@@ -99,7 +98,41 @@ const styles = StyleSheet.create({
     flex: 1,
 
   },
-
+  epi: {
+    borderWidth: 2,
+    borderRadius: 5,
+    marginTop: 0,
+    margin: 50,
+    backgroundColor: '#d81e5b',
+  },
+  phy: {
+    borderWidth: 2,
+    borderRadius: 5,
+    marginTop: 0,
+    margin: 50,
+    backgroundColor: '#3a3335',
+  },
+  dx: {
+    borderWidth: 2,
+    borderRadius: 5,
+    marginTop: 0,
+    margin: 50,
+    backgroundColor: '#2ec4b6',
+  },
+  pec: {
+    borderWidth: 2,
+    borderRadius: 5,
+    marginTop: 0,
+    margin: 50,
+    backgroundColor: '#db4c40',
+  },
+  cug: {
+    borderWidth: 2,
+    borderRadius: 5,
+    marginTop: 0,
+    margin: 50,
+    backgroundColor: '#ffb627',
+},
 
 })
 

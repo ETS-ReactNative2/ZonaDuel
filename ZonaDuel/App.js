@@ -28,10 +28,9 @@ class HomeScreen extends React.Component {
     }
     const {navigate} = this.props.navigation;
     return (
-      <ThemeProvider uiTheme={uiTheme}>
-    <View style={styles.container}>
-    <LinearGradient colors={['#f44f0d', '#f88a00', '#fcac00']} style={styles.linearGradient}>
 
+    <View style={styles.container}>
+      <LinearGradient colors={['#f44f0d', '#f88a00', '#fcac00']} style={styles.linearGradient}>
     <View style={styles.logo}>
         <Image
           style={{width: 200, height: 200,}}
@@ -52,9 +51,8 @@ class HomeScreen extends React.Component {
 
           </View>
           </LinearGradient>
-
       </View>
-      </ThemeProvider>
+
     );
   }
 }
@@ -66,21 +64,21 @@ const styles = StyleSheet.create({
   more: {
     borderWidth: 1,
     borderRadius: 2,
-    margin: 10,
+    margin: 30,
     marginTop: 70,
-    backgroundColor: '#73c51a',
+    backgroundColor: '#c9e4ca',
   },
   quiz: {
-    backgroundColor: '#1194f6',
+    backgroundColor: '#db4c40',
     borderWidth: 2,
     borderRadius: 5,
     margin: 70,
-    marginTop: 150,
+    marginTop: 120,
 
   },
   container: {
     flex: 1,
-
+    backgroundColor: '#c9e4ca'
   },
 
 

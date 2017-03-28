@@ -14,7 +14,18 @@ class Score extends Component {
     const {score} = this.props.navigation.state.params;
     return (
       <LinearGradient colors={['#f44f0d', '#f88a00', '#fcac00']} style={styles.linearGradient}>
-        <Text>{score}</Text>
+      <View
+      style={{
+        backgroundColor: 'transparent',
+      }}>
+      <Text style={{
+        textAlign: 'center',
+        marginTop: 10,
+        fontSize: 42,
+        color: 'white'
+      }}>Votre score final:</Text>
+
+      </View>
       </LinearGradient>
     )
   }

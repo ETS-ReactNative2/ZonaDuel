@@ -204,7 +204,7 @@ class Quizz extends Component {
                       Votre score: {this.state.score}
                   </Text>
                 </View>
-                {this.state.status === 'finished' ? <Text>lalM</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
+                <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>
             </View>
             </LinearGradient>
         )
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#73c51a',
   },
   quiz: {
-    backgroundColor: '#1194f6',
+    backgroundColor: '#db4c40',
     borderWidth: 2,
     borderRadius: 5,
     marginTop: 40,
@@ -239,6 +239,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
+  },
+  qu1: {
+    backgroundColor: '#db4c40',
   },
 
 
