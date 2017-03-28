@@ -3,9 +3,10 @@ import {
   Text,
   Button,
   View,
+  StyleSheet,
   TouchableHighlight
 } from 'react-native';
-
+import LinearGradient from 'react-native-linear-gradient';
 import AllQuestions from './questions.js'
 import React, {Component} from 'react';
 
@@ -13,8 +14,15 @@ const getRandomInt = (min, max) =>  Math.floor(Math.random() * (max - min + 1) +
 
 const QuestionBox = ({question}) => {
     return (
-        <View style={{flexDirection: 'row', height: 100, padding: 20}}>
-            <Text>{question.question}</Text>
+        <View style={{
+          backgroundColor: 'transparent',
+          flexDirection: 'row', height: 100, padding: 20}}>
+            <Text
+            style={{
+              color: 'white',
+              textAlign: 'center',
+              fontSize: 24
+            }}>{question.question}</Text>
         </View>
     )
 }
@@ -52,11 +60,7 @@ class ButtonRender extends Component {
     render() {
         return (
             <TouchableHighlight>
-                <View style={{
-                        backgroundColor: this.state.color,
-                        marginTop: 40,
-                        width: '80%'
-                    }}
+                <View style={styles.quiz}
                     >
                     <Button
                         title={this.props.elem}
@@ -149,8 +153,10 @@ const allPossible = (tab, theme) => {
 class Quizz extends Component {
     constructor(props) {
         super(props);
+        const {theme} = this.props.navigation.state.params;
+
         this.state = {
-            all: allPossible(AllQuestions, 'EPI'),
+            all: allPossible(AllQuestions, theme),
             current: 0,
             score: 0,
             status: 'working'
@@ -170,13 +176,15 @@ class Quizz extends Component {
 
     changeQuestion(response) {
         const actual = this.state.current + 1;
-
+        const {navigate} = this.props.navigation;
+        let newScore = 0;
         if (this.state.all[this.state.current].right.includes(response)) {
-            let newScore = this.state.score + 1;
+            newScore = this.state.score + 1;
             this.setState({score: newScore});
         }
-        if ((this.state.all.length == actual) || (actual == 5)) {
+        if ((this.state.all.length == actual) || (actual == 3)) {
             this.setState({status: 'finished'});
+            navigate('Score', {score: (newScore !== 0) ?  newScore : this.state.score})
         } else {
             this.setState({current: actual});
         }
@@ -184,17 +192,56 @@ class Quizz extends Component {
 
     render() {
         return (
+          <LinearGradient colors={['#f44f0d', '#f88a00', '#fcac00']} style={styles.linearGradient}>
             <View>
-                <Text>
-                    {JSON.stringify(this.state.status)}
-                </Text>
-                <Text>
-                    Votre score: {this.state.score}
-                </Text>
-                {this.state.status === 'finished' ? <Text>Votre score final: {this.state.score}</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
+                <View style={{
+                  backgroundColor: 'transparent'
+                }}>
+                  <Text style={{
+                    textAlign: 'center',
+                    fontSize: 18
+                  }}>
+                      Votre score: {this.state.score}
+                  </Text>
+                </View>
+                {this.state.status === 'finished' ? <Text>lalM</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
             </View>
+            </LinearGradient>
         )
     }
 }
+
+const styles = StyleSheet.create({
+  linearGradient: {
+   flex: 1,
+   paddingLeft: 15,
+   paddingRight: 15,
+   borderRadius: 5
+ },
+  logo: {
+    marginLeft: 90,
+  },
+  more: {
+    borderWidth: 1,
+    borderRadius: 2,
+    margin: 10,
+    marginTop: 70,
+    backgroundColor: '#73c51a',
+  },
+  quiz: {
+    backgroundColor: '#1194f6',
+    borderWidth: 2,
+    borderRadius: 5,
+    marginTop: 40,
+    width: '80%'
+
+  },
+  container: {
+    flex: 1,
+
+  },
+
+
+})
 
 export default Quizz;

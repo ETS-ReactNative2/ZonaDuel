@@ -10,11 +10,11 @@ import {
   NativesModules
 } from 'react-native';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
-
+import Score from './score.js'
 import { StackNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import Quizz from './Quizz.js';
-
+import ThemeChooser from './theme.js'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -46,7 +46,7 @@ class HomeScreen extends React.Component {
           </View>
           <View style={styles.quiz}>
         <Button raised primary
-          onPress={() => navigate('Quizz')}
+          onPress={() => navigate('ThemeChooser')}
           title="Commencer une nouvelle partie"
           color="#ffff" />
 
@@ -88,7 +88,9 @@ const styles = StyleSheet.create({
 
 const ZonaDuel = StackNavigator({
   Home: { screen: HomeScreen },
-  Quizz: { screen: Quizz }
+  Quizz: { screen: Quizz },
+  ThemeChooser: {screen: ThemeChooser},
+  Score: {screen: Score}
 });
 
 
