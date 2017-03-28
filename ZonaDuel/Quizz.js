@@ -2,22 +2,14 @@ import {
   AppRegistry,
   Text,
   Button,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
 import AllQuestions from './questions.js'
 import React, {Component} from 'react';
 
 const getRandomInt = (min, max) =>  Math.floor(Math.random() * (max - min + 1) + min);
-
-class Question {
-    constructor(question, right, wrong, theme) {
-        this.question = question;
-        this.theme = theme
-        this.right = right;
-        this.wrong = wrong;
-    }
-}
 
 const QuestionBox = ({question}) => {
     return (
@@ -41,7 +33,51 @@ const shuffle = (input) => {
 // const renderResponses = ({right, wrong}) => {
 // }
 
+class ButtonRender extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            color: '#841584'
+        }
+    }
+
+    changeColor() {
+        if (this.props.right) {
+            this.setState({color: 'green'});
+        } else {
+            this.setState({color: 'red'});
+        }
+    }
+
+    render() {
+        return (
+            <TouchableHighlight>
+                <View style={{
+                        backgroundColor: this.state.color,
+                        marginTop: 40,
+                        width: '80%'
+                    }}
+                    >
+                    <Button
+                        title={this.props.elem}
+                        color="#FFFFFF"
+                        onPress={() => {
+                            this.props.handleResponse(this.props.elem);
+                        }}
+                        />
+                </View>
+            </TouchableHighlight>
+        )
+    }
+}
+
 class ResponsesWrapper extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            color: '#841584'
+        }
+    }
 
     getThreeWrong(wrongs) {
         let res = [];
@@ -76,24 +112,12 @@ class ResponsesWrapper extends Component {
 
     render() {
         return (
-            <View alignItems="center">
-                <Text>
-                    Good response is:
-                </Text>
+            <View alignItems="center"
+                style={{
+                }}>
                     {this.selectResponses().map((elem, id) => {
                         return (
-                            <View style={{
-                                    backgroundColor: 'green',
-                                    marginTop: 40,
-                                    width: '80%'
-                                }}
-                                key={id}>
-                                <Button
-                                    title={elem}
-                                    titleColor="white"
-                                    onPress={() => {this.props.handleResponse(elem)}}
-                                    />
-                            </View>
+                            <ButtonRender key={id} right={this.props.question.right.includes(elem)} elem={elem} handleResponse={this.props.handleResponse}/>
                         );
                     })}
             </View>
@@ -136,6 +160,11 @@ class Quizz extends Component {
         this.setState({
             currentTheme: theme,
         });
+    }
+
+    test(res) {
+        let that = this;
+        setTimeout(that.changeQuestion(res), 1000);
     }
 
     changeQuestion(response) {
