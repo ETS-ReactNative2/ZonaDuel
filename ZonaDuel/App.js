@@ -20,6 +20,22 @@ class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'ZonaDuel',
   };
+  constructor(props) {
+    super(props);
+    var ws = new WebSocket('ws://10.18.197.226:8080');
+    this.state = {
+      best: ''
+    }
+    ws.onerror = (e) => {
+      console.log(e.message);
+      this.setState({
+        best: e.message
+      })
+    }
+    ws.onopen = (e) => {
+      this.setState({sock: ws})
+    }
+  }
   render() {
     const uiTheme = {
       palette: {
@@ -40,12 +56,12 @@ class HomeScreen extends React.Component {
         <View style={styles.more}>
             <Text style={{textAlign: 'center', fontFamily: 'Gill Sans',}}>
             ZonaDuel, un jeu rapide, amusant te permettant de défier tes amis professionnels de santé sur le Zona.
-            {'\n'}Qui sera le meilleur ?
+            {'\n'}Qui sera le meilleur ? {this.state.best}
            </Text>
           </View>
           <View style={styles.quiz}>
         <Button raised primary
-          onPress={() => navigate('ThemeChooser')}
+          onPress={() => navigate('ThemeChooser', {sock: this.state.sock})}
           title="Commencer une nouvelle partie"
           color="#ffff" />
 

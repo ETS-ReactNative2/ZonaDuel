@@ -9,8 +9,25 @@ import React, {Component} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
 class ThemeChooser extends Component {
-  render(){
+  constructor(props) {
+    super(props);
+    this.state = {
+      status: 'ok'
+    }
+  }
+  provideTheme(theme) {
+    const {sock} = this.props.navigation.state.params;
     const {navigate} = this.props.navigation;
+    sock.send('theme:'+theme);
+    this.setState({status: 'loading'})
+    sock.onmessage = (e) => {
+      if (e.data == 'joined') {
+        navigate('Quizz', {theme: theme})
+      }
+    }
+  }
+
+  render(){
     return (
       <LinearGradient colors={['#f44f0d', '#f88a00', '#fcac00']} style={styles.linearGradient}>
       <View>
@@ -23,7 +40,7 @@ class ThemeChooser extends Component {
               marginTop: 10,
               fontSize: 42,
               color: 'white'
-            }}>Choisissez un thème</Text>
+            }}>{(this.state.status == 'loading') ? 'looking for a player' : 'Choisissez un thème'}</Text>
           </View>
           <View
             style={{
@@ -34,7 +51,7 @@ class ThemeChooser extends Component {
             <Button
             title="Épidémologie"
             color="white"
-            onPress={() => {navigate('Quizz', {theme: 'EPI'})}} />
+            onPress={() => {this.provideTheme('EPI')}} />
           </View>
           <View
           style={styles.phy}>
