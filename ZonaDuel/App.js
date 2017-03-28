@@ -15,6 +15,7 @@ import { StackNavigator } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import Quizz from './Quizz.js';
 
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'ZonaDuel',
@@ -84,7 +85,6 @@ const styles = StyleSheet.create({
 
 
 })
-
 
 const ZonaDuel = StackNavigator({
   Home: { screen: HomeScreen },
