@@ -4,4 +4,4 @@
  * @flow
  */
 
-import './App.js';
+import './App.js'

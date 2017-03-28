@@ -112,6 +112,7 @@ class ResponsesWrapper extends Component {
 
     render() {
         return (
+
             <View alignItems="center"
                 style={{
                 }}>
@@ -188,9 +189,9 @@ class Quizz extends Component {
                     {JSON.stringify(this.state.status)}
                 </Text>
                 <Text>
-                    Your score: {this.state.score}
+                    Votre score: {this.state.score}
                 </Text>
-                {this.state.status === 'finished' ? <Text>Your Score is: {this.state.score}</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
+                {this.state.status === 'finished' ? <Text>Votre score final: {this.state.score}</Text> : <RenderQuestion question={this.state.all[this.state.current]} handleResponse={this.changeQuestion.bind(this)}/>}
             </View>
         )
     }
