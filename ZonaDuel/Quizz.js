@@ -16,6 +16,7 @@ const QuestionBox = ({question}) => {
     return (
         <View style={{
           backgroundColor: 'transparent',
+          justifyContent: 'center',
           flexDirection: 'row', height: 100, padding: 20}}>
             <Text
             style={{

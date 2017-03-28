@@ -17,13 +17,14 @@ class Score extends Component {
       <View
       style={{
         backgroundColor: 'transparent',
+        justifyContent: 'center'
       }}>
       <Text style={{
         textAlign: 'center',
         marginTop: 10,
         fontSize: 42,
         color: 'white'
-      }}>Votre score final:</Text>
+      }}>Votre score final: {score} </Text>
 
       </View>
       </LinearGradient>
