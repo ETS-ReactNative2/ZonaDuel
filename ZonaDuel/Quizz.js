@@ -22,7 +22,7 @@ const QuestionBox = ({question}) => {
             style={{
               color: 'white',
               textAlign: 'center',
-              fontSize: 24
+              fontSize: 15
             }}>{question.question}</Text>
         </View>
     )
@@ -185,7 +185,7 @@ class Quizz extends Component {
         }
         if ((this.state.all.length == actual) || (actual == 3)) {
             this.setState({status: 'finished'});
-            navigate('Score', {score: (newScore !== 0) ?  newScore : this.state.score})
+            navigate('Score', {score: (newScore !== 0) ?  newScore : this.state.score, sock: this.props.navigation.state.params.sock})
         } else {
             this.setState({current: actual});
         }

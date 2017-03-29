@@ -21,8 +21,8 @@ class ThemeChooser extends Component {
     sock.send('theme:'+theme);
     this.setState({status: 'loading'})
     sock.onmessage = (e) => {
-      if (e.data == 'joined') {
-        navigate('Quizz', {theme: theme})
+      if (e.data == 'join') {
+        navigate('Quizz', {theme: theme, sock: sock})
       }
     }
   }
@@ -40,7 +40,7 @@ class ThemeChooser extends Component {
               marginTop: 10,
               fontSize: 42,
               color: 'white'
-            }}>{(this.state.status == 'loading') ? 'looking for a player' : 'Choisissez un thème'}</Text>
+            }}>{(this.state.status == 'loading') ? 'En attente de joueurs' : 'Choisissez un thème'}</Text>
           </View>
           <View
             style={{
@@ -58,28 +58,28 @@ class ThemeChooser extends Component {
             <Button
             color="white"
             title="Physiopathologie"
-            onPress={() => {navigate('Quizz', {theme: 'PHY'})}} />
+            onPress={() => {this.provideTheme('PHY')}} />
           </View>
           <View
           style={styles.dx}>
             <Button
             color="white"
             title="Signes cliniques"
-            onPress={() => {navigate('Quizz', {theme: 'DX'})}} />
+            onPress={() => {this.provideTheme('DX')}} />
           </View>
           <View
           style={styles.pec}>
             <Button
             color="white"
             title="Prise en charge"
-            onPress={() => {navigate('Quizz', {theme: 'PEC'})}} />
+            onPress={() => {this.provideTheme('PEC')}} />
           </View>
           <View
           style={styles.cug}>
             <Button
             color="white"
             title="Prévention"
-            onPress={() => {navigate('Quizz', {theme: 'CUG'})}} />
+            onPress={() => {this.provideTheme('CUG')}} />
           </View>
           </View>
           </View>

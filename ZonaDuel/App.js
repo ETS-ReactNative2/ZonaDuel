@@ -22,7 +22,7 @@ class HomeScreen extends React.Component {
   };
   constructor(props) {
     super(props);
-    var ws = new WebSocket('ws://10.18.197.226:8080');
+    var ws = new WebSocket('ws://192.168.0.30:8080');
     this.state = {
       best: ''
     }
@@ -34,6 +34,14 @@ class HomeScreen extends React.Component {
     }
     ws.onopen = (e) => {
       this.setState({sock: ws})
+    }
+  }
+  joiningParty() {
+    const {navigate} = this.props.navigation;
+    this.state.sock.send('joining');
+    this.state.sock.onmessage = (e) => {
+      console.log(e);
+        navigate('Quizz', {theme: e.data, sock: this.state.sock})
     }
   }
   render() {
@@ -60,11 +68,16 @@ class HomeScreen extends React.Component {
            </Text>
           </View>
           <View style={styles.quiz}>
+          <Button raised primary
+          onPress={() => this.joiningParty()}
+          title="Rejoindre une nouvelle partie"
+          color="#ffff" />
+          </View>
+          <View style={styles.quiz}>
         <Button raised primary
           onPress={() => navigate('ThemeChooser', {sock: this.state.sock})}
           title="Commencer une nouvelle partie"
           color="#ffff" />
-
           </View>
           </LinearGradient>
       </View>
@@ -88,8 +101,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#db4c40',
     borderWidth: 2,
     borderRadius: 5,
-    margin: 70,
-    marginTop: 120,
+    margin: 30,
+    marginTop: 60,
 
   },
   container: {

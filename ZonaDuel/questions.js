@@ -2,7 +2,7 @@ export default [{
 	id: 0,
 	theme: "EPI",
 	question: "Combien de personnes sont touchées en France par an ?",
-	right: ["300000"],
+	right: ["300 000"],
 	wrong: [
 		"50 000",
 		"100 000",
@@ -142,7 +142,7 @@ export default [{
 	right: ["L'éruption cutanée est localisée sur un seul côté du corps"],
 	wrong: [
 		"Les vésicules sont groupées en bouquets",
-		"Il peut touher la région ophtalmique",
+		"Il peut toucher la région ophtalmique",
 		"Le virus est à l'état dormant"
 	]
 },{
